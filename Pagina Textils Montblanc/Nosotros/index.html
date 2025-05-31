@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Descubre la historia, misión, visión, valores, proceso, testimonios, equipo, certificaciones, y más de Textils Montablanc, donde tradición e innovación se fusionan en textiles premium.">
+  <meta name="author" content="Textils Montablanc">
+  <meta name="robots" content="index,follow">
+  <title>Sobre Nosotros | Textils Montablanc</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+  <!-- (Opcional) Iconos de Font Awesome para redes sociales -->
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> -->
+  <style>
+    /* VARIABLES CSS */
+    :root {
+      --primary-color: #D4AF37;       /* Oro premium */
+      --secondary-color: #002147;     /* Azul marino profundo */
+      --accent-color: #003366;        /* Azul brillante */
+      --light-bg: #F8F8F8;            /* Fondo muy claro */
+      --white-color: #FFFFFF;
+      --font-primary: 'Roboto', sans-serif;
+      --base-spacing: 1.2rem;
+      --transition-speed: 0.3s;
+    }
+    
+    /* PRELOADER */
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--white-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3000;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    #preloader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+    
+    /* SCROLL PROGRESS BAR */
+    #progressBarContainer {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 5px;
+      background: rgba(0, 0, 0, 0.1);
+      z-index: 2500;
+    }
+    #progressBar {
+      height: 100%;
+      width: 0%;
+      background: var(--primary-color);
+      transition: width 0.25s ease-out;
+    }
+    
+    /* STICKY SOCIAL BAR (Lado Izquierdo) */
+    .sticky-social {
+      position: fixed;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      background: var(--secondary-color);
+      padding: 0.5rem;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      z-index: 2000;
+    }
+    .sticky-social a {
+      display: block;
+      margin: 0.4rem 0;
+      color: var(--white-color);
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+    .sticky-social a:hover {
+      color: var(--primary-color);
+    }
+    
+    /* RESET Y BASE */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+    body {
+      font-family: var(--font-primary);
+      background: var(--light-bg);
+      color: var(--secondary-color);
+      line-height: 1.8;
+      overflow-x: hidden;
+      transition: background 0.5s, color 0.5s;
+    }
+    body.dark-mode {
+      background: #121212;
+      color: #ccc;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: color var(--transition-speed) ease;
+    }
+    a:hover {
+      color: var(--primary-color);
+    }
+    
+    /* HEADER y Navegación */
+    header {
+      background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+      color: var(--white-color);
+      padding: calc(var(--base-spacing) * 1);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+      position: sticky;
+      top: 0;
+      z-index: 2000;
+      transition: padding 0.3s ease, background 0.3s ease;
+    }
+    header.shrink {
+      padding: calc(var(--base-spacing) * 0.6);
+    }
+    header nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--base-spacing);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.9rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    header.shrink .logo {
+      font-size: 1.6rem;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+    }
+    .nav-links li {
+      margin-left: calc(var(--base-spacing) * 1.5);
+    }
+    .nav-links li a {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white-color);
+      font-size: 2rem;
+      cursor: pointer;
+    }
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+      .nav-links {
+        flex-direction: column;
+        align-items: center;
+        margin-top: var(--base-spacing);
+        display: none;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+    }
+    .dark-mode-toggle {
+      background: none;
+      border: 2px solid var(--white-color);
+      border-radius: 5px;
+      color: var(--white-color);
+      padding: 0.3rem 0.5rem;
+      margin-left: var(--base-spacing);
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background var(--transition-speed) ease;
+    }
+    .dark-mode-toggle:hover {
+      background: var(--white-color);
+      color: var(--secondary-color);
+    }
+    
+    /* HERO SECTION con efecto Parallax */
+    .hero {
+      position: relative;
+      background: url('https://via.placeholder.com/1400x500?text=Conoce+Nuestra+Historia') center/cover no-repeat;
+      height: 360px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--white-color);
+      background-attachment: fixed;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 0 var(--base-spacing);
+      animation: fadeIn 1s ease-out;
+    }
+    .hero-content h1 {
+      font-size: 2.6rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    }
+    .hero-content p {
+      font-size: 1.3rem;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    /* MAIN CONTENT */
+    main {
+      max-width: 1100px;
+      margin: 3rem auto;
+      padding: 3rem 2rem;
+      background: var(--white-color);
+    }
+    main section {
+      margin-bottom: 3rem;
+    }
+    main h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: var(--secondary-color);
+      padding-bottom: 0.5rem;
+      margin-bottom: 2rem;
+      border-bottom: 3px solid var(--primary-color);
+      display: inline-block;
+    }
+    
+    /* SECCIÓN: About (Nuestra Historia / Misión y Visión) */
+    .about-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      align-items: center;
+    }
+    .about-image {
+      width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .about-image img {
+      width: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-speed) ease;
+    }
+    .about-image img:hover {
+      transform: scale(1.05);
+    }
+    .about-text {
+      font-size: 1.125rem;
+      text-align: justify;
+      line-height: 1.9;
+      padding: 0 var(--base-spacing);
+    }
+    
+    /* SECCIÓN: Nuestro Proceso (Video) */
+    .process {
+      text-align: center;
+    }
+    .process iframe {
+      width: 100%;
+      max-width: 800px;
+      height: 450px;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .process p {
+      margin-top: var(--base-spacing);
+      font-size: 1.125rem;
+    }
+    
+    /* SECCIÓN: Testimonios con slider */
+    .testimonials {
+      position: relative;
+      overflow: hidden;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .testimonial-slider {
+      display: flex;
+      transition: transform 1s ease;
+    }
+    .testimonial {
+      flex: 0 0 100%;
+      padding: var(--base-spacing);
+      text-align: center;
+      font-style: italic;
+      font-size: 1.125rem;
+    }
+    .slider-controls {
+      text-align: center;
+      margin-top: var(--base-spacing);
+    }
+    .slider-controls button {
+      background: var(--primary-color);
+      border: none;
+      color: var(--white-color);
+      padding: 0.5rem 1rem;
+      margin: 0 0.5rem;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background var(--transition-speed) ease;
+    }
+    .slider-controls button:hover {
+      background: darken(var(--primary-color), 10%);
+    }
+    
+    /* SECCIÓN: Línea del Tiempo */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+      border-left: 3px solid var(--primary-color);
+      margin: var(--base-spacing) 0;
+    }
+    .timeline-item {
+      margin-bottom: 2rem;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -1.1rem;
+      top: 0.2rem;
+      width: 1rem;
+      height: 1rem;
+      background: var(--primary-color);
+      border-radius: 50%;
+      border: 3px solid var(--white-color);
+    }
+    .timeline-item h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.3rem;
+    }
+    .timeline-item span {
+      font-size: 0.9rem;
+      color: var(--primary-color);
+    }
+    .timeline-item p {
+      font-size: 1rem;
+      margin-top: 0.5rem;
+    }
+    
+    /* SECCIÓN: Nuestro Equipo */
+    .team {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+    }
+    .team-member {
+      background: var(--white-color);
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    }
+    .team-member:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .team-member img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: var(--base-spacing);
+    }
+    .team-member h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    .team-member p {
+      font-size: 1rem;
+      color: var(--primary-color);
+    }
+    
+    /* SECCIÓN: FAQ */
+    .faq {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .faq details {
+      margin-bottom: 1rem;
+      border: 1px solid var(--secondary-color);
+      border-radius: 5px;
+      padding: var(--base-spacing);
+      background: var(--white-color);
+      transition: background var(--transition-speed) ease;
+    }
+    .faq details[open] {
+      background: var(--light-bg);
+    }
+    .faq summary {
+      font-size: 1.125rem;
+      font-weight: 500;
+      cursor: pointer;
+      list-style: none;
+    }
+    .faq p {
+      margin-top: var(--base-spacing);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    
+    /* SECCIÓN: Newsletter */
+    .newsletter {
+      text-align: center;
+      padding: var(--base-spacing);
+      border: 2px dashed var(--primary-color);
+      border-radius: 10px;
+      background: var(--light-bg);
+      margin: 2rem auto;
+      max-width: 800px;
+    }
+    .newsletter h3 {
+      font-size: 1.8rem;
+      margin-bottom: var(--base-spacing);
+    }
+    .newsletter form {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: var(--base-spacing);
+    }
+    .newsletter input[type="email"] {
+      padding: 0.8rem;
+      border: 1px solid var(--secondary-color);
+      border-radius: 5px;
+      font-size: 1rem;
+      min-width: 250px;
+      flex: 1;
+    }
+    .newsletter button {
+      padding: 0.8rem 1.5rem;
+      background: var(--primary-color);
+      color: var(--white-color);
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background var(--transition-speed) ease;
+    }
+    .newsletter button:hover {
+      background: #b38e2f;
+    }
+    
+    /* Botón Back to Top */
+    #backToTop {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--primary-color);
+      color: var(--white-color);
+      border: none;
+      border-radius: 50%;
+      width: 3rem;
+      height: 3rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.4s ease;
+      z-index: 1000;
+    }
+    
+    /* FOOTER */
+    footer {
+      background: var(--secondary-color);
+      color: var(--white-color);
+      text-align: center;
+      padding: var(--base-spacing);
+      font-size: 0.875rem;
+      margin-top: 2rem;
+    }
+    footer .socials {
+      margin-bottom: 0.5rem;
+    }
+    footer .socials a {
+      margin: 0 0.5rem;
+      font-size: 1rem;
+    }
+    
+    /* COOKIE CONSENT */
+    #cookieConsent {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: var(--secondary-color);
+      color: var(--white-color);
+      padding: var(--base-spacing);
+      text-align: center;
+      z-index: 3000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: var(--base-spacing);
+    }
+    #cookieConsent button {
+      background: var(--primary-color);
+      border: none;
+      color: var(--white-color);
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background var(--transition-speed) ease;
+    }
+    #cookieConsent button:hover {
+      background: #b38e2f;
+    }
+    
+    /* ANIMACIONES */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      main {
+        margin: 1rem;
+        padding: 1.5rem;
+      }
+      header .logo {
+        font-size: 1.5rem;
+      }
+      main h2 {
+        font-size: 1.75rem;
+      }
+      .about-section {
+        grid-template-columns: 1fr;
+      }
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+      .hero-content p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- PRELOADER -->
+  <div id="preloader">
+    <h2>Cargando...</h2>
+  </div>
+  
+  <!-- SCROLL PROGRESS BAR -->
+  <div id="progressBarContainer">
+    <div id="progressBar"></div>
+  </div>
+  
+  <!-- STICKY SOCIAL BAR -->
+  <div class="sticky-social">
+    <a href="#" aria-label="Facebook">F</a>
+    <a href="#" aria-label="Instagram">I</a>
+    <a href="#" aria-label="LinkedIn">L</a>
+  </div>
+  
+  <!-- HEADER -->
+  <header role="banner">
+    <nav role="navigation" aria-label="Menú Principal">
+      <div class="logo">Textils Montablanc</div>
+      <div>
+        <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">&#9776;</button>
+        <button class="dark-mode-toggle" id="darkModeToggle">Modo Oscuro</button>
+      </div>
+      <ul class="nav-links">
+        <li><a href="../Inicio/index.html" target="_blank">Inicio</a></li>
+        <li><a href="../Productos/index.html" target="_blank">Productos</a></li>
+        <li><a href="../Nosotros/index.html" target="_blank">Nosotros</a></li>
+        <li><a href="../Contacto/index.html" target="_blank">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <!-- HERO SECTION -->
+  <section class="hero reveal">
+    <div class="hero-content">
+      <h1>Sobre Nosotros</h1>
+      <p>La fusión perfecta entre tradición e innovación</p>
+    </div>
+  </section>
+  
+  <!-- MAIN CONTENT -->
+  <main role="main">
+    <!-- Sección: Nuestra Historia -->
+    <section class="reveal">
+      <h2>Nuestra Historia</h2>
+      <div class="about-section">
+        <div class="about-image">
+          <img src="https://via.placeholder.com/600x400?text=Historia" alt="Nuestra Historia">
+        </div>
+        <div class="about-text">
+          <p>Fundada en 1965, Textils Montablanc inició su trayectoria en un modesto taller artesanal, donde la pasión por los textiles se convirtió en un legado. Con el paso de los años, hemos evolucionado fusionando tradición e innovación, siempre comprometidos con la excelencia.</p>
+          <p>Cada producto es el resultado de un proceso meticuloso y creativo que honra el pasado mientras abraza el futuro.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Sección: Misión y Visión -->
+    <section class="reveal">
+      <h2>Misión y Visión</h2>
+      <div class="about-section">
+        <div class="about-image">
+          <img src="https://via.placeholder.com/600x400?text=Misi%C3%B3n+%26+Visi%C3%B3n" alt="Misión y Visión">
+        </div>
+        <div class="about-text">
+          <p><strong>Misión:</strong> Ofrecer textiles premium que integren la maestría artesanal y la más innovadora tecnología, elevando los estándares de calidad y diseño en la industria.</p>
+          <p><strong>Visión:</strong> Convertirnos en líderes globales en textiles de alta gama, comprometidos con la excelencia, la ética y la sostenibilidad, y creando experiencias que inspiren a nuestros clientes.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Sección: Nuestro Proceso -->
+    <section class="reveal process">
+      <h2>Nuestro Proceso</h2>
+      <p>Conoce cada paso de nuestro proceso creativo y de fabricación, donde la inspiración se transforma en productos excepcionales.</p>
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Nuestro Proceso" allowfullscreen></iframe>
+    </section>
+    
+    <!-- Sección: Testimonios -->
+    <section class="reveal">
+      <h2>Testimonios</h2>
+      <div class="testimonials">
+        <div class="testimonial-slider">
+          <div class="testimonial">
+            <p>"Textils Montablanc ha transformado mi concepto de calidad. Cada pieza es una obra de arte."</p>
+            <p><strong>- Cliente Satisfecho</strong></p>
+          </div>
+          <div class="testimonial">
+            <p>"La integración de tradición e innovación se refleja en cada diseño que ofrecen."</p>
+            <p><strong>- Fashionista</strong></p>
+          </div>
+          <div class="testimonial">
+            <p>"Una experiencia única: textiles de alta gama, procesos sostenibles y atención excepcional."</p>
+            <p><strong>- Comprador Feliz</strong></p>
+          </div>
+        </div>
+        <div class="slider-controls">
+          <button id="prevTestimonial">Anterior</button>
+          <button id="nextTestimonial">Siguiente</button>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Sección: Línea del Tiempo -->
+    <section class="reveal">
+      <h2>Línea del Tiempo</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3>1965</h3>
+          <span>Fundación</span>
+          <p>Inicio en un pequeño taller artesanal, dando origen a nuestro legado.</p>
+        </div>
+        <div class="timeline-item">
+          <h3>1980</h3>
+          <span>Expansión</span>
+          <p>Modernización de técnicas y ampliación de nuestra línea de productos.</p>
+        </div>
+        <div class="timeline-item">
+          <h3>2000</h3>
+          <span>Innovación</span>
+          <p>Incorporación de tecnología avanzada en diseño y fabricación.</p>
+        </div>
+        <div class="timeline-item">
+          <h3>2020</h3>
+          <span>Globalización</span>
+          <p>Consolidación internacional, reafirmando nuestro compromiso con la excelencia.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Sección: Nuestro Equipo -->
+    <section class="reveal">
+      <h2>Nuestro Equipo</h2>
+      <div class="team">
+        <div class="team-member">
+          <img src="https://via.placeholder.com/300x200?text=Juan+P%C3%A9rez" alt="Juan Pérez">
+          <h3>Juan Pérez</h3>
+          <p>CEO & Fundador</p>
+        </div>
+        <div class="team-member">
+          <img src="https://via.placeholder.com/300x200?text=Mar%C3%ADa+Garc%C3%ADa" alt="María García">
+          <h3>María García</h3>
+          <p>Directora de Diseño</p>
+        </div>
+        <div class="team-member">
+          <img src="https://via.placeholder.com/300x200?text=Carlos+L%C3%B3pez" alt="Carlos López">
+          <h3>Carlos López</h3>
+          <p>Gerente de Operaciones</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Sección: FAQ -->
+    <section class="reveal faq">
+      <h2>Preguntas Frecuentes</h2>
+      <details>
+        <summary>¿Cuál es la característica principal de sus textiles?</summary>
+        <p>Nuestros productos se distinguen por la fusión de técnicas artesanales y tecnología avanzada, lo que garantiza diseños y calidad excepcionales.</p>
+      </details>
+      <details>
+        <summary>¿Ofrecen personalización en sus productos?</summary>
+        <p>Sí, adaptamos nuestros procesos para satisfacer las necesidades específicas de cada cliente, creando piezas únicas.</p>
+      </details>
+      <details>
+        <summary>¿Qué medidas toman para la sostenibilidad?</summary>
+        <p>Implementamos prácticas eco-responsables en cada etapa de producción y trabajamos para minimizar nuestro impacto ambiental.</p>
+      </details>
+    </section>
+    
+    <!-- Sección: Newsletter -->
+    <section class="reveal newsletter">
+      <h2>Suscríbete a Nuestro Newsletter</h2>
+      <h3>Mantente al día con nuestras novedades</h3>
+      <form action="#" method="POST">
+        <input type="email" name="email" placeholder="Tu correo electrónico" required>
+        <button type="submit">Suscribirme</button>
+      </form>
+    </section>
+    
+    <!-- Botón Back to Top -->
+    <button id="backToTop" aria-label="Volver al inicio">&#8679;</button>
+  </main>
+  
+  <!-- FOOTER -->
+  <footer role="contentinfo">
+    <div class="socials">
+      <a href="#" aria-label="Facebook">Facebook</a> |
+      <a href="#" aria-label="Instagram">Instagram</a> |
+      <a href="#" aria-label="LinkedIn">LinkedIn</a>
+    </div>
+    <p>&copy; 2025 Textils Montablanc. Todos los derechos reservados.</p>
+  </footer>
+  
+  <!-- COOKIE CONSENT BANNER -->
+  <div id="cookieConsent">
+    <p>Utilizamos cookies para mejorar tu experiencia. <a href="#">Más información</a>.</p>
+    <button id="acceptCookies">Aceptar</button>
+  </div>
+  
+  <script>
+    // Preloader
+    window.addEventListener("load", () => {
+      const preloader = document.getElementById('preloader');
+      preloader.classList.add('hidden');
+    });
+    
+    // Scroll Progress Bar
+    const progressBar = document.getElementById('progressBar');
+    window.addEventListener('scroll', () => {
+      let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      let docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      let scrollPercent = (scrollTop / docHeight) * 100;
+      progressBar.style.width = scrollPercent + '%';
+    });
+    
+    // Header Shrink on Scroll
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.pageYOffset > 80) {
+        header.classList.add('shrink');
+      } else {
+        header.classList.remove('shrink');
+      }
+    });
+    
+    // Menú Hamburguesa
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    menuToggle.addEventListener('click', () => {
+      const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', !expanded);
+      navLinks.classList.toggle('active');
+    });
+    
+    // Dark Mode Toggle con persistencia en localStorage
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    function setDarkMode(enabled) {
+      if (enabled) {
+        document.body.classList.add('dark-mode');
+        darkModeToggle.textContent = 'Modo Claro';
+        localStorage.setItem('darkMode', 'true');
+      } else {
+        document.body.classList.remove('dark-mode');
+        darkModeToggle.textContent = 'Modo Oscuro';
+        localStorage.removeItem('darkMode');
+      }
+    }
+    // Cargar preferencia de dark mode
+    if (localStorage.getItem('darkMode') === 'true') {
+      setDarkMode(true);
+    }
+    darkModeToggle.addEventListener('click', () => {
+      setDarkMode(!document.body.classList.contains('dark-mode'));
+    });
+    
+    // Testimonios Slider con controles
+    let currentTestimonial = 0;
+    const testimonials = document.querySelectorAll('.testimonial');
+    const testimonialSlider = document.querySelector('.testimonial-slider');
+    const prevBtn = document.getElementById('prevTestimonial');
+    const nextBtn = document.getElementById('nextTestimonial');
+    function showTestimonial(index) {
+      testimonialSlider.style.transform = `translateX(-${index * 100}%)`;
+    }
+    nextBtn.addEventListener('click', () => {
+      currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+      showTestimonial(currentTestimonial);
+    });
+    prevBtn.addEventListener('click', () => {
+      currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+      showTestimonial(currentTestimonial);
+    });
+    // Autoplay slider
+    setInterval(() => {
+      currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+      showTestimonial(currentTestimonial);
+    }, 5000);
+    
+    // Animación con Intersection Observer
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    reveals.forEach(el => observer.observe(el));
+    
+    // Botón Back to Top
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      backToTop.style.display = window.scrollY > 300 ? 'flex' : 'none';
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    
+    // Cookie Consent
+    const cookieConsent = document.getElementById('cookieConsent');
+    const acceptCookies = document.getElementById('acceptCookies');
+    if (localStorage.getItem('cookiesAccepted') === 'true') {
+      cookieConsent.style.display = 'none';
+    }
+    acceptCookies.addEventListener('click', () => {
+      cookieConsent.style.display = 'none';
+      localStorage.setItem('cookiesAccepted', 'true');
+    });
+  </script>
+</body>
+</html>

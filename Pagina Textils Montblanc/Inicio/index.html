@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Textils Montablanc ofrece textiles de alta calidad para vestir tu mundo. Descubre nuestros productos, conoce nuestra historia y contáctanos.">
+  <meta name="author" content="Textils Montablanc">
+  <meta name="robots" content="index,follow">
+  <title>Textils Montablanc | Venta de Textiles de Calidad</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+  <style>
+    /* VARIABLES CSS */
+    :root {
+      --primary-color: #b08746;       /* Oro suave */
+      --secondary-color: #2c3e50;     /* Azul marino */
+      --light-background: #ecf0f1;    /* Gris claro */
+      --white-color: #ffffff;
+      --transition-speed: 0.3s;
+      --font-primary: 'Roboto', Arial, sans-serif;
+    }
+
+    /* RESET Y BASE */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+    body {
+      font-family: var(--font-primary);
+      background-color: var(--light-background);
+      color: var(--secondary-color);
+      line-height: 1.6;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: color var(--transition-speed) ease;
+    }
+    a:hover {
+      color: var(--primary-color);
+    }
+
+    /* ANIMACIONES */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    /* HEADER & NAVEGACIÓN */
+    header {
+      background: var(--secondary-color);
+      color: var(--white-color);
+      padding: 1.25rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 2000;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.75rem;
+      letter-spacing: 1px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+    }
+    .nav-links li {
+      margin: 0 1rem;
+    }
+    .nav-links li a {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white-color);
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      background: url('https://via.placeholder.com/1400x500?text=Textils+Montablanc') center/cover no-repeat;
+      height: 500px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--white-color);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+    }
+    .hero .container {
+      position: relative;
+      z-index: 2;
+      padding: 0 1rem;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1.25rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    }
+    .hero p {
+      font-size: 1.25rem;
+      margin-bottom: 1.875rem;
+    }
+    .hero a {
+      background: var(--primary-color);
+      padding: 0.75rem 1.5rem;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: background var(--transition-speed) ease;
+    }
+    .hero a:hover {
+      background: darken(var(--primary-color), 10%);
+    }
+
+    /* MAIN Y SECCIONES */
+    main {
+      padding: 2.5rem 0;
+    }
+    .section {
+      padding: 3.75rem 1rem;
+      background: var(--white-color);
+      margin-bottom: 1.875rem;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    .section h2 {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      font-size: 2rem;
+      color: var(--secondary-color);
+    }
+
+    /* PRODUCTS */
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      justify-content: center;
+    }
+    .product-card {
+      background: var(--white-color);
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      width: 300px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      transition: transform var(--transition-speed) ease;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+      loading: lazy;
+    }
+    .product-info {
+      padding: 1rem;
+    }
+    .product-info h3 {
+      font-size: 1.375rem;
+      margin-bottom: 0.625rem;
+    }
+    .product-info p {
+      margin-bottom: 0.625rem;
+      color: #555;
+    }
+    .price {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+
+    /* ABOUT US */
+    .about {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.25rem;
+      padding: 1.25rem;
+    }
+    .about img {
+      flex: 1 1 400px;
+      max-width: 400px;
+      border-radius: 8px;
+      loading: lazy;
+    }
+    .about-text {
+      flex: 2 1 500px;
+      font-size: 1.125rem;
+      line-height: 1.8;
+    }
+
+    /* CONTACT */
+    .contact-form {
+      background: #f9f9f9;
+      padding: 1.875rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    .contact-form button {
+      background: var(--primary-color);
+      color: var(--white-color);
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background var(--transition-speed) ease;
+    }
+    .contact-form button:hover {
+      background: darken(var(--primary-color), 10%);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--secondary-color);
+      color: var(--white-color);
+      text-align: center;
+      padding: 1.25rem;
+      font-size: 0.875rem;
+    }
+    footer .socials {
+      margin-bottom: 0.5rem;
+    }
+    footer .socials a {
+      margin: 0 0.5rem;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    /* BACK TO TOP BUTTON */
+    #backToTop {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--primary-color);
+      color: var(--white-color);
+      border: none;
+      border-radius: 50%;
+      width: 3rem;
+      height: 3rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.4s ease;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.25rem; }
+      .hero p { font-size: 1rem; }
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-top: 1rem;
+        display: none;
+      }
+      nav ul.active { display: flex; }
+      .menu-toggle { display: block; }
+      .about { flex-direction: column; }
+      .products { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header role="banner">
+    <nav role="navigation" aria-label="Menú Principal">
+      <div class="logo">Textils Montablanc</div>
+      <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="../Inicio/index.html" target="_blank">Inicio</a></li>
+        <li><a href="../Productos/index.html" target="_blank">Productos</a></li>
+        <li><a href="../Nosotros/index.html" target="_blank">Nosotros</a></li>
+        <li><a href="../Contacto/index.html" target="_blank">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main role="main">
+    <!-- HERO SECTION -->
+    <section class="hero reveal" id="inicio">
+      <div class="container">
+        <h1>Bienvenido a Textils Montablanc</h1>
+        <p>Textiles de calidad para vestir tu mundo.</p>
+        <a href="#productos">Ver Productos</a>
+      </div>
+    </section>
+    
+    <!-- PRODUCTS SECTION -->
+    <section class="section reveal" id="productos">
+      <div class="container">
+        <h2>Nuestros Productos</h2>
+        <div class="products">
+          <!-- Producto 1 -->
+          <article class="product-card">
+            <img src="/imagenes/imagen.jpg" alt="Producto 1: Imagen representativa" loading="lazy">
+            <div class="product-info">
+              <h3>Producto 1</h3>
+              <p>Descripción breve del producto 1.</p>
+              <p class="price">$29.99</p>
+            </div>
+          </article>
+          <!-- Producto 2 -->
+          <article class="product-card">
+            <img src="/imagenes/imagen1.jpg" alt="Producto 2: Imagen representativa" loading="lazy">
+            <div class="product-info">
+              <h3>Producto 2</h3>
+              <p>Descripción breve del producto 2.</p>
+              <p class="price">$39.99</p>
+            </div>
+          </article>
+          <!-- Producto 3 -->
+          <article class="product-card">
+            <img src="/imagenes/imagen2.jpg" alt="Producto 3: Imagen representativa" loading="lazy">
+            <div class="product-info">
+              <h3>Producto 3</h3>
+              <p>Descripción breve del producto 3.</p>
+              <p class="price">$49.99</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    
+    <!-- ABOUT SECTION -->
+    <section class="section reveal" id="nosotros">
+      <div class="container about">
+        <img src="https://via.placeholder.com/400x300?text=Acerca+de+nosotros" alt="Imagen representativa de la empresa" loading="lazy">
+        <div class="about-text">
+          <h2>Sobre Nosotros</h2>
+          <p>En Textils Montablanc nos dedicamos a ofrecer textiles de alta calidad. Con una extensa trayectoria y un firme compromiso con la innovación y el diseño, nos posicionamos como líderes en el sector. Nuestra pasión es vestir a nuestros clientes con productos que combinan tradición y modernidad.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- CONTACT SECTION -->
+    <section class="section reveal" id="contacto">
+      <div class="container">
+        <h2>Contacto</h2>
+        <div class="contact-form">
+          <form action="#" method="POST" aria-label="Formulario de Contacto">
+            <input type="text" name="nombre" placeholder="Tu nombre" required>
+            <input type="email" name="email" placeholder="Tu email" required>
+            <textarea name="mensaje" rows="4" placeholder="Tu mensaje" required></textarea>
+            <button type="submit">Enviar Mensaje</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- BACK TO TOP BUTTON -->
+  <button id="backToTop" aria-label="Volver al inicio">&#8679;</button>
+
+  <!-- FOOTER -->
+  <footer role="contentinfo">
+    <div class="socials">
+      <a href="#" aria-label="Facebook">Facebook</a> |
+      <a href="#" aria-label="Instagram">Instagram</a> |
+      <a href="#" aria-label="LinkedIn">LinkedIn</a>
+    </div>
+    <p>&copy; 2025 Textils Montablanc. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    // MENÚ HAMBURGUESA
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    menuToggle.addEventListener('click', () => {
+      const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', !isExpanded);
+      navLinks.classList.toggle('active');
+    });
+    
+    // BOTÓN BACK TO TOP
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTop.style.display = 'flex';
+      } else {
+        backToTop.style.display = 'none';
+      }
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    
+    // ANIMACIONES CON INTERSECTION OBSERVER
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    reveals.forEach(reveal => revealObserver.observe(reveal));
+
+    document.addEventListener("DOMContentLoaded", () => {
+      console.log("Página cargada exitosamente.");
+    });
+  </script>
+</body>
+</html>
